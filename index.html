@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        <h1>Etch-A-Sketch</h1>
+    </header>
+
+    <div id="container">
+    </div>
+
+    <div id="one" class="circle"></div>
+    <div id="two" class="circle"></div>
+
+<div class="btn">
+    <button id="clear">Clear</button>
+    <!-- <button id="clickDrag">Click and Drag</button> -->
+    <!-- <button id="hoverDrag">Hover & Drag</button> -->
+</div>
+</body>
+
+    <script>
+    const container = document.getElementById("container");
+    const hoverDragBtn = document.getElementById("hoverDrag");
+    const clearBtn = document.getElementById("clear");
+    // const clickDragBtn = document.getElementById("clickDrag");
+    let gridSize;
+    
+    // clickDragBtn.addEventListener('click', clickDragBoxes);
+    clearBtn.addEventListener('click', clearBoxes);
+    // hoverDragBtn.addEventListener('click', hoverDragBoxes);
+     
+    makeBoxes(gridSize = 16);
+    let sketches = document.querySelectorAll(".square1");
+    hoverDragBoxes();
+  
+    function makeBoxes () { 
+        for (let i = 0; i < gridSize; i++)
+        {
+            for (let j = 0; j < gridSize; j++)
+            {
+                let square = document.createElement('div');
+                square.className = 'square1';
+                container.appendChild(square);
+                container.style.setProperty('--element-gridSize', gridSize);
+            }
+        }
+    }; 
+
+        function hoverDragBoxes () { 
+        sketches.forEach((sketch) => {
+        sketch.addEventListener('mouseover', () => {
+        sketch.style.backgroundColor = "black";
+        })})};
+        
+        // function clickDragBoxes () {
+        //     sketches.forEach((sketch) => {
+        //     sketch.removeEventListener('mouseover', hoverDragBoxes);
+        //     sketch.addEventListener("mousedown", () => {
+        //     sketch.style.backgroundColor = "black";
+        //     })})};
+
+        function clearBoxes() {
+        getGridSize(); 
+        removeBoxes();
+        makeBoxes();
+        sketches = document.querySelectorAll(".square1");
+        hoverDragBoxes();
+        };
+
+        function getGridSize () {
+            let gridString = prompt("How big dis thing be?", "16");
+            gridSize = parseInt(gridString);
+            if (gridSize < 0)
+            {
+                return getGridSize();
+            }
+        };
+
+        function removeBoxes() {
+            while (container.firstChild) {
+            container.removeChild(container.lastChild);
+            }
+        }
+   
+           
+    </script>
+</html>
