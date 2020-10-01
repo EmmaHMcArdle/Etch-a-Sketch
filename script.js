@@ -41,7 +41,7 @@ function makeBoxes () {
     
     // Open prompt to find out what user would like to size the grid
     function getGridSize () {
-        let gridString = prompt("Please enter the gride size: ", "16");
+        let gridString = prompt("Please enter the grid size: ", "16");
         gridSize = parseInt(gridString);
         if (gridSize < 0)
         {
