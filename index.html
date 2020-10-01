@@ -22,72 +22,8 @@
     <!-- <button id="clickDrag">Click and Drag</button> -->
     <!-- <button id="hoverDrag">Hover & Drag</button> -->
 </div>
+<script type="text/javascript" src="script.js"></script>
 </body>
 
-    <script>
-    const container = document.getElementById("container");
-    const hoverDragBtn = document.getElementById("hoverDrag");
-    const clearBtn = document.getElementById("clear");
-    // const clickDragBtn = document.getElementById("clickDrag");
-    let gridSize;
     
-    // clickDragBtn.addEventListener('click', clickDragBoxes);
-    clearBtn.addEventListener('click', clearBoxes);
-    // hoverDragBtn.addEventListener('click', hoverDragBoxes);
-     
-    makeBoxes(gridSize = 16);
-    let sketches = document.querySelectorAll(".square1");
-    hoverDragBoxes();
-  
-    function makeBoxes () { 
-        for (let i = 0; i < gridSize; i++)
-        {
-            for (let j = 0; j < gridSize; j++)
-            {
-                let square = document.createElement('div');
-                square.className = 'square1';
-                container.appendChild(square);
-                container.style.setProperty('--element-gridSize', gridSize);
-            }
-        }
-    }; 
-
-        function hoverDragBoxes () { 
-        sketches.forEach((sketch) => {
-        sketch.addEventListener('mouseover', () => {
-        sketch.style.backgroundColor = "black";
-        })})};
-        
-        // function clickDragBoxes () {
-        //     sketches.forEach((sketch) => {
-        //     sketch.removeEventListener('mouseover', hoverDragBoxes);
-        //     sketch.addEventListener("mousedown", () => {
-        //     sketch.style.backgroundColor = "black";
-        //     })})};
-
-        function clearBoxes() {
-        getGridSize(); 
-        removeBoxes();
-        makeBoxes();
-        sketches = document.querySelectorAll(".square1");
-        hoverDragBoxes();
-        };
-
-        function getGridSize () {
-            let gridString = prompt("How big dis thing be?", "16");
-            gridSize = parseInt(gridString);
-            if (gridSize < 0)
-            {
-                return getGridSize();
-            }
-        };
-
-        function removeBoxes() {
-            while (container.firstChild) {
-            container.removeChild(container.lastChild);
-            }
-        }
-   
-           
-    </script>
 </html>
